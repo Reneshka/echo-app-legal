@@ -167,7 +167,7 @@
 
   <p class="app-name">Écho</p>
   <h1>Datenschutzerklärung</h1>
-  <p class="updated">Letzte Aktualisierung: 19. März 2026</p>
+  <p class="updated">Letzte Aktualisierung: 3. April 2026</p>
 
   <div class="preamble">
     Écho ist eine Messaging-Anwendung, die auf dem Prinzip der Vergänglichkeit aufgebaut ist. Ihre Nachrichten verblassen. Ihre Unterhaltungen verschwinden. Ihre Kontakte verblassen mit der Zeit. Dies ist keine Fehlfunktion — es ist das Grundprinzip des Dienstes.<br><br>
@@ -179,7 +179,7 @@
   <div class="contact-block">
     <strong>Name:</strong> René Obe<br>
     <strong>Anschrift:</strong> Schloßstrasse 2, 53115 Bonn, Deutschland<br>
-    <strong>E-Mail:</strong> reneobeworks@gmail.com
+    <strong>E-Mail:</strong> rene@perihelie-labs.net
   </div>
   <p>Da kein Datenschutzbeauftragter bestellt wurde, können Anfragen zum Datenschutz direkt an den Verantwortlichen gerichtet werden.</p>
 
@@ -207,7 +207,27 @@
   <h3>2.3 Verbindungsdaten zwischen Nutzern</h3>
   <p>Wenn Sie einen Kontakt hinzufügen, speichern wir einen Datensatz dieser Verbindung (Kennungen beider Nutzer, Datum der letzten Interaktion, Verbindungsstatus). Diese Daten unterliegen der Vergänglichkeitsrichtlinie.</p>
 
-  <h3>2.4 Daten, die wir NICHT erheben</h3>
+  <h3>2.4 Daten im Zusammenhang mit ÉchoSpectre</h3>
+  <p>ÉchoSpectre ist eine optionale Wortspiel-Funktion innerhalb von Écho. Wenn Sie ÉchoSpectre aktivieren, werden die folgenden Daten verarbeitet:</p>
+  <table>
+    <thead><tr><th>Datum</th><th>Zweck</th><th>Rechtsgrundlage</th></tr></thead>
+    <tbody>
+      <tr><td>ÉchoSpectre-Einwilligungspräferenzen</td><td>Speicherung Ihrer Datenschutzentscheidungen für das Spiel</td><td>Einwilligung (Art. 6 Abs. 1 lit. a DSGVO)</td></tr>
+      <tr><td>Satzfragmente aus Ihren Nachrichten</td><td>Sprachliche und poetische Bewertung durch einen KI-Drittanbieter</td><td>Einwilligung (Art. 6 Abs. 1 lit. a DSGVO)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>2.4.1 Verarbeitung durch künstliche Intelligenz</h3>
+  <p>Wenn Sie ÉchoSpectre spielen, werden <strong>Satzfragmente</strong> aus Ihren Nachrichten an einen Drittanbieter für künstliche Intelligenz (ein großes Sprachmodell) zur sprachlichen Bewertung (Grammatik, poetische Qualität und Stilbewertung) übermittelt. Diese Verarbeitung weist folgende Merkmale auf:</p>
+  <ul>
+    <li>Es werden ausschließlich <strong>isolierte Satzfragmente</strong> übermittelt — niemals vollständige Unterhaltungen, Metadaten, Nutzerkennungen oder Informationen, die Sie identifizieren könnten.</li>
+    <li>Die Verarbeitung findet <strong>ausschließlich während des Spiels</strong> statt, und die Fragmente werden vom KI-Anbieter nicht dauerhaft gespeichert.</li>
+    <li>Nachrichten werden <strong>vorübergehend clientseitig entschlüsselt</strong> (auf Ihrem Gerät), um die Fragmente zu extrahieren. Diese werden dann über eine gesicherte Verbindung (TLS) an den Bewertungsdienst übermittelt.</li>
+    <li>Diese Verarbeitung gilt nur für Unterhaltungen, bei denen <strong>beide Parteien ihre ausdrückliche Einwilligung</strong> über die ÉchoSpectre-Datenschutzeinstellungen erteilt haben.</li>
+    <li>Sie können <strong>Ihre Einwilligung jederzeit widerrufen</strong> über die ÉchoSpectre-Datenschutzeinstellungen. Der Widerruf gilt sofort für alle zukünftigen Spielsitzungen.</li>
+  </ul>
+
+  <h3>2.5 Daten, die wir NICHT erheben</h3>
   <ul>
     <li>Wir greifen nicht auf Ihr Telefonbuch zu.</li>
     <li>Wir verwenden keine Cookies, Werbe-Tracker oder verhaltensanalytische Instrumente.</li>
@@ -238,9 +258,11 @@
       <tr><td>Google LLC (Firebase Storage)</td><td>Dateispeicherung</td><td>Fotos, Audio, Profil</td><td>EU / Vereinigte Staaten</td></tr>
       <tr><td>Google LLC (Cloud Functions)</td><td>Serverlogik</td><td>Automatisierte Verarbeitung</td><td>EU / Vereinigte Staaten</td></tr>
       <tr><td>Google LLC (FCM)</td><td>Push-Benachrichtigungen</td><td>FCM-Token, Inhalt</td><td>EU / Vereinigte Staaten</td></tr>
+      <tr><td>DeepSeek (über API)</td><td>Sprachliche Bewertung für ÉchoSpectre</td><td>Satzfragmente (ohne Metadaten oder Kennungen)</td><td>China</td></tr>
     </tbody>
   </table>
   <p>Die Datenübermittlung in die Vereinigten Staaten erfolgt auf Grundlage des EU-US Data Privacy Framework (Angemessenheitsbeschluss vom 10. Juli 2023) sowie der Standardvertragsklauseln von Google.</p>
+  <p><strong>Übermittlung nach China (DeepSeek):</strong> Die an DeepSeek übermittelten Satzfragmente enthalten keine personenbezogenen Daten. Es werden ausschließlich isolierte Textfragmente ohne jeglichen Kontext, der Rückschlüsse auf den Verfasser oder Empfänger ermöglichen würde, gesendet. Diese Verarbeitung beruht auf Ihrer ausdrücklichen Einwilligung (Art. 49 Abs. 1 lit. a DSGVO) und betrifft ausschließlich die optionale ÉchoSpectre-Funktion.</p>
   <p>Wir verkaufen, vermieten oder teilen keine personenbezogenen Daten mit Dritten zu kommerziellen, werblichen oder Profiling-Zwecken.</p>
 
   <h2>5. Ihre Rechte</h2>
@@ -254,7 +276,7 @@
     <li><strong>Widerspruchsrecht (Art. 21 DSGVO):</strong> Widerspruch unter bestimmten Voraussetzungen.</li>
     <li><strong>Widerruf der Einwilligung:</strong> Bei einwilligungsbasierten Verarbeitungen (Profilbild, Benachrichtigungen) jederzeit in den Einstellungen widerrufbar.</li>
   </ul>
-  <p>Zur Ausübung Ihrer Rechte: <strong>reneobeworks@gmail.com</strong></p>
+  <p>Zur Ausübung Ihrer Rechte: <strong>rene@perihelie-labs.net</strong></p>
   <p>Wir antworten innerhalb eines Monats (Art. 12 Abs. 3 DSGVO).</p>
   <p><strong>Beschwerderecht</strong> — Sie können eine Beschwerde bei der zuständigen Aufsichtsbehörde einlegen:</p>
   <ul>
@@ -270,6 +292,7 @@
     <li>Verschlüsselung der gespeicherten Daten auf den Firebase-Servern.</li>
     <li>Automatisierte und unwiderrufliche Löschung gemäß der Vergänglichkeitsrichtlinie.</li>
     <li>Keine Sicherungskopien gelöschter Daten.</li>
+    <li>Bei ÉchoSpectre: ausschließlich vorübergehende clientseitige Entschlüsselung, Übermittlung isolierter Fragmente über TLS, keine dauerhafte Speicherung durch den KI-Anbieter.</li>
   </ul>
 
   <h2>7. Minderjährige</h2>
@@ -280,7 +303,7 @@
 
   <h2>9. Kontakt</h2>
   <div class="contact-block">
-    <strong>E-Mail:</strong> reneobeworks@gmail.com<br>
+    <strong>E-Mail:</strong> rene@perihelie-labs.net<br>
     <strong>Anschrift:</strong> Schloßstrasse 2, 53115 Bonn, Deutschland
   </div>
 

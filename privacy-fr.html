@@ -182,7 +182,7 @@
 
   <p class="app-name">Écho</p>
   <h1>Politique de confidentialité</h1>
-  <p class="updated">Dernière mise à jour : 19 mars 2026</p>
+  <p class="updated">Dernière mise à jour : 3 avril 2026</p>
 
   <div class="preamble">
     Écho est une application de messagerie construite sur l'impermanence. Vos messages s'effacent. Vos conversations disparaissent. Vos contacts s'estompent avec le temps. Ce n'est pas un dysfonctionnement — c'est le principe fondateur du service.<br><br>
@@ -194,7 +194,7 @@
   <div class="contact-block">
     <strong>Nom :</strong> René Obe<br>
     <strong>Adresse :</strong> Schloßstrasse 2, 53115 Bonn, Allemagne<br>
-    <strong>E-mail :</strong> reneobeworks@gmail.com
+    <strong>E-mail :</strong> rene@perihelie-labs.net
   </div>
   <p>En l'absence de Délégué à la Protection des Données (DPO), toute question relative à vos données personnelles peut être adressée au responsable de traitement à l'adresse ci-dessus.</p>
 
@@ -222,7 +222,27 @@
   <h3>2.3 Données de connexion entre utilisateurs</h3>
   <p>Lorsque vous ajoutez un contact, nous stockons un enregistrement de cette connexion (identifiants des deux utilisateurs, date de dernière interaction, statut). Ces données sont soumises à la politique d'impermanence décrite en section 3.</p>
 
-  <h3>2.4 Données que nous ne collectons pas</h3>
+  <h3>2.4 Données liées à ÉchoSpectre</h3>
+  <p>ÉchoSpectre est une fonctionnalité optionnelle de jeu de mots intégrée à Écho. Lorsque vous activez ÉchoSpectre, les données suivantes sont traitées :</p>
+  <table>
+    <thead><tr><th>Donnée</th><th>Finalité</th><th>Base juridique</th></tr></thead>
+    <tbody>
+      <tr><td>Préférences de consentement ÉchoSpectre</td><td>Enregistrement de vos choix de confidentialité pour le jeu</td><td>Consentement (art. 6(1)(a) RGPD)</td></tr>
+      <tr><td>Fragments de phrases issus de vos messages</td><td>Évaluation linguistique et poétique par un service d'intelligence artificielle tiers</td><td>Consentement (art. 6(1)(a) RGPD)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>2.4.1 Traitement par intelligence artificielle</h3>
+  <p>Lorsque vous jouez à ÉchoSpectre, des <strong>fragments de phrases</strong> extraits de vos messages sont transmis à un service d'intelligence artificielle tiers (un modèle de langage) aux fins d'évaluation linguistique (notation grammaticale, poétique et stylistique). Ce traitement présente les caractéristiques suivantes :</p>
+  <ul>
+    <li>Seuls des <strong>fragments de phrases isolés</strong> sont transmis — jamais des conversations entières, des métadonnées, des identifiants d'utilisateur ou des informations permettant de vous identifier.</li>
+    <li>Le traitement a lieu <strong>uniquement pendant la partie</strong> et les fragments ne sont pas stockés de manière permanente par le prestataire d'IA.</li>
+    <li>Les messages sont <strong>temporairement déchiffrés côté client</strong> (sur votre appareil) le temps nécessaire à l'extraction des fragments, puis transmis au service d'évaluation via une connexion sécurisée (TLS).</li>
+    <li>Ce traitement ne s'applique qu'aux conversations pour lesquelles <strong>les deux parties ont donné leur consentement explicite</strong> via les paramètres de confidentialité d'ÉchoSpectre.</li>
+    <li>Vous pouvez <strong>révoquer votre consentement à tout moment</strong> depuis les paramètres de confidentialité d'ÉchoSpectre. La révocation prend effet immédiatement pour toute partie future.</li>
+  </ul>
+
+  <h3>2.5 Données que nous ne collectons pas</h3>
   <ul>
     <li>Nous n'accédons pas à votre répertoire téléphonique.</li>
     <li>Nous n'utilisons pas de cookies, de traceurs publicitaires, ni d'outils d'analyse comportementale.</li>
@@ -253,9 +273,11 @@
       <tr><td>Google LLC (Firebase Storage)</td><td>Stockage fichiers</td><td>Photos, audio, profil</td><td>UE / États-Unis</td></tr>
       <tr><td>Google LLC (Cloud Functions)</td><td>Logique serveur</td><td>Traitements automatiques</td><td>UE / États-Unis</td></tr>
       <tr><td>Google LLC (FCM)</td><td>Notifications push</td><td>Jeton FCM, contenu</td><td>UE / États-Unis</td></tr>
+      <tr><td>DeepSeek (via API)</td><td>Évaluation linguistique ÉchoSpectre</td><td>Fragments de phrases (sans métadonnées ni identifiants)</td><td>Chine</td></tr>
     </tbody>
   </table>
   <p>Les transferts vers les États-Unis sont encadrés par le EU-US Data Privacy Framework (décision d'adéquation du 10 juillet 2023) et les clauses contractuelles types de Google.</p>
+  <p><strong>Transferts vers la Chine (DeepSeek) :</strong> Les fragments de phrases transmis à DeepSeek pour l'évaluation linguistique ne contiennent aucune donnée personnelle identifiable. Seuls des fragments textuels isolés, dépourvus de tout contexte permettant d'identifier l'auteur ou le destinataire, sont envoyés. Ce traitement est fondé sur votre consentement explicite (art. 49(1)(a) RGPD) et ne concerne que la fonctionnalité optionnelle ÉchoSpectre.</p>
   <p>Nous ne vendons, ne louons et ne partageons aucune donnée personnelle avec des tiers à des fins commerciales, publicitaires ou de profilage.</p>
 
   <h2>5. Vos droits</h2>
@@ -269,7 +291,7 @@
     <li><strong>Droit d'opposition (art. 21) :</strong> Opposition au traitement dans certaines circonstances.</li>
     <li><strong>Retrait du consentement :</strong> Pour les traitements fondés sur le consentement (photo de profil, notifications), retrait possible à tout moment depuis les paramètres.</li>
   </ul>
-  <p>Pour exercer l'un de ces droits : <strong>reneobeworks@gmail.com</strong></p>
+  <p>Pour exercer l'un de ces droits : <strong>rene@perihelie-labs.net</strong></p>
   <p>Nous nous engageons à répondre dans un délai d'un mois (art. 12(3) RGPD).</p>
   <p><strong>Droit de réclamation</strong> — Vous pouvez introduire une réclamation auprès de l'autorité de contrôle de votre pays de résidence :</p>
   <ul>
@@ -285,6 +307,7 @@
     <li>Chiffrement des données au repos sur les serveurs Firebase.</li>
     <li>Suppression automatisée et irréversible des données conformément à la politique d'impermanence.</li>
     <li>Absence de copies de sauvegarde des données supprimées.</li>
+    <li>Dans le cadre d'ÉchoSpectre : déchiffrement temporaire côté client uniquement, transmission de fragments isolés via TLS, absence de stockage permanent par le prestataire d'IA.</li>
   </ul>
 
   <h2>7. Mineurs</h2>
@@ -295,7 +318,7 @@
 
   <h2>9. Contact</h2>
   <div class="contact-block">
-    <strong>E-mail :</strong> reneobeworks@gmail.com<br>
+    <strong>E-mail :</strong> rene@perihelie-labs.net<br>
     <strong>Adresse :</strong> Schloßstrasse 2, 53115 Bonn, Allemagne
   </div>
 

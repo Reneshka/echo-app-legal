@@ -167,7 +167,7 @@
 
   <p class="app-name">Écho</p>
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: 19 March 2026</p>
+  <p class="updated">Last updated: 3 April 2026</p>
 
   <div class="preamble">
     Écho is a messaging application built on impermanence. Your messages fade away. Your conversations disappear. Your contacts dim over time. This is not a malfunction — it is the founding principle of the service.<br><br>
@@ -179,7 +179,7 @@
   <div class="contact-block">
     <strong>Name:</strong> René Obe<br>
     <strong>Address:</strong> Schloßstrasse 2, 53115 Bonn, Germany<br>
-    <strong>E-mail:</strong> reneobeworks@gmail.com
+    <strong>E-mail:</strong> rene@perihelie-labs.net
   </div>
   <p>In the absence of a Data Protection Officer (DPO), any enquiry relating to your personal data may be directed to the data controller at the address above.</p>
 
@@ -207,7 +207,27 @@
   <h3>2.3 Connection Data Between Users</h3>
   <p>When you add a contact, we store a record of that connection (identifiers of both users, date of last interaction, connection status). This data is subject to the impermanence policy described in Section 3.</p>
 
-  <h3>2.4 Data We Do NOT Collect</h3>
+  <h3>2.4 Data Related to ÉchoSpectre</h3>
+  <p>ÉchoSpectre is an optional word game feature integrated into Écho. When you activate ÉchoSpectre, the following data is processed:</p>
+  <table>
+    <thead><tr><th>Data</th><th>Purpose</th><th>Legal Basis</th></tr></thead>
+    <tbody>
+      <tr><td>ÉchoSpectre consent preferences</td><td>Recording your privacy choices for the game</td><td>Consent (Art. 6(1)(a) GDPR)</td></tr>
+      <tr><td>Phrase fragments extracted from your messages</td><td>Linguistic and poetic evaluation by a third-party artificial intelligence service</td><td>Consent (Art. 6(1)(a) GDPR)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>2.4.1 Artificial Intelligence Processing</h3>
+  <p>When you play ÉchoSpectre, <strong>phrase fragments</strong> extracted from your messages are transmitted to a third-party artificial intelligence service (a large language model) for linguistic evaluation (grammar, poetic quality and style scoring). This processing has the following characteristics:</p>
+  <ul>
+    <li>Only <strong>isolated phrase fragments</strong> are transmitted — never entire conversations, metadata, user identifiers or any information that could identify you.</li>
+    <li>Processing occurs <strong>only during gameplay</strong> and the fragments are not permanently stored by the AI provider.</li>
+    <li>Messages are <strong>temporarily decrypted on the client side</strong> (on your device) for the time necessary to extract the fragments, which are then transmitted to the evaluation service via a secure connection (TLS).</li>
+    <li>This processing applies only to conversations for which <strong>both parties have given their explicit consent</strong> through the ÉchoSpectre privacy settings.</li>
+    <li>You may <strong>revoke your consent at any time</strong> from the ÉchoSpectre privacy settings. Revocation takes effect immediately for any future game session.</li>
+  </ul>
+
+  <h3>2.5 Data We Do NOT Collect</h3>
   <ul>
     <li>We do not access your phone's contact list.</li>
     <li>We do not use cookies, advertising trackers or behavioural analytics tools.</li>
@@ -238,9 +258,11 @@
       <tr><td>Google LLC (Firebase Storage)</td><td>File storage</td><td>Photos, audio, profile</td><td>EU / United States</td></tr>
       <tr><td>Google LLC (Cloud Functions)</td><td>Server logic</td><td>Automated processing</td><td>EU / United States</td></tr>
       <tr><td>Google LLC (FCM)</td><td>Push notifications</td><td>FCM token, content</td><td>EU / United States</td></tr>
+      <tr><td>DeepSeek (via API)</td><td>ÉchoSpectre linguistic evaluation</td><td>Phrase fragments (no metadata or identifiers)</td><td>China</td></tr>
     </tbody>
   </table>
   <p>Data transfers to the United States are governed by the EU-US Data Privacy Framework (adequacy decision of 10 July 2023) and by Google's Standard Contractual Clauses.</p>
+  <p><strong>Transfers to China (DeepSeek):</strong> The phrase fragments transmitted to DeepSeek for linguistic evaluation contain no personally identifiable data. Only isolated text fragments, devoid of any context that could identify the author or recipient, are sent. This processing is based on your explicit consent (Art. 49(1)(a) GDPR) and applies only to the optional ÉchoSpectre feature.</p>
   <p>We do not sell, rent or share any personal data with third parties for commercial, advertising or profiling purposes.</p>
 
   <h2>5. Your Rights</h2>
@@ -254,7 +276,7 @@
     <li><strong>Right to object (Art. 21):</strong> Objection to processing in certain circumstances.</li>
     <li><strong>Withdrawal of consent:</strong> For processing based on consent (profile photo, notifications), you may withdraw your consent at any time from the application settings.</li>
   </ul>
-  <p>To exercise any of these rights: <strong>reneobeworks@gmail.com</strong></p>
+  <p>To exercise any of these rights: <strong>rene@perihelie-labs.net</strong></p>
   <p>We undertake to respond within one month (Art. 12(3) GDPR).</p>
   <p><strong>Right to lodge a complaint</strong> — You may lodge a complaint with the supervisory authority of your country of residence:</p>
   <ul>
@@ -270,6 +292,7 @@
     <li>Encryption of data at rest on Firebase servers.</li>
     <li>Automated and irreversible deletion of data in accordance with the impermanence policy.</li>
     <li>No backup copies of deleted data.</li>
+    <li>For ÉchoSpectre: temporary client-side decryption only, transmission of isolated fragments via TLS, no permanent storage by the AI provider.</li>
   </ul>
 
   <h2>7. Minors</h2>
@@ -280,7 +303,7 @@
 
   <h2>9. Contact</h2>
   <div class="contact-block">
-    <strong>E-mail:</strong> reneobeworks@gmail.com<br>
+    <strong>E-mail:</strong> rene@perihelie-labs.net<br>
     <strong>Address:</strong> Schloßstrasse 2, 53115 Bonn, Germany
   </div>
 
