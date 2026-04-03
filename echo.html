@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Écho — Périhélie Labs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f5f5f0;
+      --text: #1a1a1a;
+      --muted: #888880;
+      --accent: #1a1a1a;
+      --border: #c8c8c0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Space Mono', 'Courier New', monospace;
+      font-size: 13px;
+      line-height: 1.9;
+      padding: 48px 40px;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    /* ── Header ── */
+    header {
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
+      margin-bottom: 64px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo-wrap img {
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .header-right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .lab-name {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .lab-name span {
+      color: var(--text);
+    }
+
+    /* ── Nav terminal ── */
+    nav {
+      display: flex;
+      gap: 0;
+      align-items: center;
+    }
+
+    .nav-item {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--muted);
+      padding: 4px 12px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      background: none;
+      transition: color 0.15s;
+      position: relative;
+    }
+
+    .nav-item:first-child {
+      padding-left: 0;
+    }
+
+    .nav-item.active {
+      color: var(--text);
+    }
+
+    /* Effet curseur clignotant sur l'onglet actif */
+    .nav-item.active::after {
+      content: '█';
+      font-size: 10px;
+      margin-left: 4px;
+      animation: blink 1.1s step-end infinite;
+      color: var(--text);
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    /* ── Sélecteur de langue ── */
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    .toolbar-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-right: 20px;
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 4px 10px;
+      transition: color 0.15s;
+      position: relative;
+    }
+
+    .lang-btn:hover {
+      color: var(--text);
+    }
+
+    .lang-btn.active {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .lang-btn.active::after {
+      content: '▌';
+      font-size: 9px;
+      margin-left: 2px;
+      animation: blink 0.9s step-end infinite;
+    }
+
+    /* ── Contenu ── */
+    .manifeste {
+      position: relative;
+      min-height: 400px;
+    }
+
+    .lang-content {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .lang-content.visible {
+      opacity: 1;
+      position: relative;
+      pointer-events: auto;
+    }
+
+    .manifeste p {
+      font-size: 13px;
+      color: var(--text);
+      margin-bottom: 24px;
+      max-width: 640px;
+    }
+
+    .manifeste p:first-child {
+      font-size: 13px;
+      font-style: italic;
+      color: var(--muted);
+      border-left: 2px solid var(--border);
+      padding-left: 16px;
+      margin-bottom: 32px;
+    }
+
+    /* Préfixe terminal sur le premier paragraphe */
+    .manifeste p:first-child::before {
+      content: '> ';
+      color: var(--muted);
+      font-style: normal;
+    }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 96px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .signature {
+      margin-top: 32px;
+      font-size: 13px;
+      color: var(--muted);
+      font-style: italic;
+      text-align: right;
+      max-width: 640px;
+    }
+
+    .cursor-footer {
+      animation: blink 1.4s step-end infinite;
+    }
+
+    /* ── Layout deux colonnes ── */
+    .page-layout {
+      display: flex;
+      gap: 48px;
+      align-items: flex-start;
+    }
+
+    .manifeste {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* ── Sidebar bêta ── */
+    .beta-sidebar {
+      width: 160px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 24px;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 600px) {
+      body {
+        padding: 32px 24px;
+      }
+
+      .page-layout {
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .beta-sidebar {
+        width: 100%;
+        position: static;
+      }
+
+      .beta-form input[type="email"] {
+        font-size: 16px; /* évite le zoom auto sur iOS */
+      }
+
+      .header-right {
+        height: auto;
+        gap: 10px;
+      }
+    }
+
+    .beta-sidebar-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .beta-desc {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 16px;
+      max-width: none;
+    }
+
+    .beta-form input[type="email"] {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--text);
+      padding: 7px 9px;
+      outline: none;
+      margin-bottom: 8px;
+      border-radius: 0;
+    }
+
+    .beta-form input[type="email"]::placeholder {
+      color: var(--muted);
+    }
+
+    .beta-form input[type="email"]:focus {
+      border-color: var(--text);
+    }
+
+    .beta-form button {
+      background: none;
+      border: 1px solid var(--border);
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 6px 10px;
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .beta-form button:hover {
+      color: var(--text);
+      border-color: var(--text);
+    }
+
+    .beta-success {
+      font-size: 11px;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-wrap">
+      <a href="index.html"><img src="periehelie_labs_logo.png" alt="Périhélie Labs"></a>
+    </div>
+    <div class="header-right">
+      <div class="lab-name">Périhélie <span>Labs</span> — perihelie-labs.net</div>
+      <nav>
+        <a class="nav-item" href="index.html">Laboratoire</a>
+        <a class="nav-item active" href="echo.html">Écho</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <span class="toolbar-label">Lang /</span>
+    <button class="lang-btn active" data-lang="fr">FR</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="de">DE</button>
+    <button class="lang-btn" data-lang="ru">RU</button>
+    <button class="lang-btn" data-lang="es">ES</button>
+  </div>
+
+  <div class="page-layout">
+  <main class="manifeste">
+
+    <!-- Français -->
+    <div class="lang-content visible" data-lang="fr">
+      <p>Écho – La messagerie spectrale — Android / iOS, bêta</p>
+      <p>Dans Écho, lorsque vous envoyez un message, le texte n'arrive pas d'un seul bloc. Il se révèle progressivement, fragment après fragment, comme des mots qui sortent d'un révélateur photographique. Certains apparaissent en premier. D'autres attendent. La pensée de l'autre se reconstitue sous vos yeux. Au total le message met une quarantaine de minutes à arriver, mais durant tout le processus vous voyez les mots apparaître, s'agencer et se mettre en place pour former le texte final. L'adjectif spectral est employé pour désigner l'atmosphère fantomatique de l'application, où chaque interaction lance un processus similaire au développement d'une photo ou d'un polaroid : le texte émerge, les photos émergent, la musique émerge.</p>
+      <p>Lorsque vous ajoutez un contact, celui-ci se « développe » aussi en une quarantaine de minutes, durant laquelle vous pouvez voir sa photo se développer.</p>
+      <p>La plupart des applications de messagerie sont basées sur l'instantanéité et l'immédiateté. Écho part du principe que vous n'êtes pas disponible. Écho part en fait du principe que vous êtes absent. Que vous êtes un souvenir. Et que peut-être un écho vous trouvera quelque part.</p>
+      <p>Les messages que vous envoyez pâlissent progressivement et disparaissent après 7 jours.</p>
+      <p>Si vous n'avez plus d'interaction avec un contact pendant un long moment (une vingtaine de jours), sa photo pâlit, comme une photo qui perd ses contrastes, et le contact disparaît complètement de votre liste. Vous n'avez donc plus à accumuler des contacts fantomatiques à qui vous n'avez plus parlé depuis la fin de vos études. Ce n'est pas une coupure brutale. C'est un éloignement, comme dans la vie réelle.</p>
+      <p>Écho est une correspondance, pas un flux. On s'écrit au tour par tour. En plus d'être une messagerie spectrale, Écho est aussi une radio spectrale. Vous pouvez demander à recevoir des échos musicaux et Écho ira vous chercher un morceau à travers l'espace et le temps, un morceau en général tellement obscur que vous n'en avez sans doute jamais entendu parler.</p>
+      <p>Écho est une messagerie basée sur l'impermanence.</p>
+      <p>Dans Écho, tout est un écho. C'est le terme que l'on utilise pour tout. Les contacts sont des échos, les messages sont des échos, les bugs sont des échos. Tout est un écho parce que tout est un souvenir. L'application elle-même est un écho, d'où son nom. Et comme tout écho, elle disparaîtra à son tour, le moment venu.</p>
+    </div>
+
+    <!-- English -->
+    <div class="lang-content" data-lang="en">
+      <p>Écho – The Spectral Messenger — Android / iOS, beta</p>
+      <p>In Écho, when you send a message, the text does not arrive all at once. It reveals itself progressively, fragment after fragment, like words emerging from a photographic developer. Some appear first. Others wait. The other person's thoughts reconstitute themselves before your eyes. In total, the message takes about forty minutes to arrive, but throughout the entire process you watch the words appear, arrange themselves and fall into place to form the final text. The adjective spectral is used to describe the haunting atmosphere of the application, where each interaction triggers a process similar to the development of a photograph or a polaroid: the text emerges, the photos emerge, the music emerges.</p>
+      <p>When you add a contact, they too "develop" over about forty minutes, during which you can watch their photo take shape.</p>
+      <p>Most messaging applications are built on instantaneity and immediacy. Écho works from the assumption that you are not available. Écho works, in fact, from the assumption that you are absent. That you are a memory. And that perhaps an echo will find you somewhere.</p>
+      <p>The messages you send fade progressively and disappear after 7 days.</p>
+      <p>If you have no further interaction with a contact for a long time (around twenty days), their photo fades, like a photograph losing its contrast, and the contact disappears entirely from your list. You no longer have to accumulate ghostly contacts you haven't spoken to since the end of your studies. It is not a brutal severance. It is a drifting apart, as in real life.</p>
+      <p>Écho is a correspondence, not a feed. We write to each other in turns. As well as being a spectral messaging app, Écho is also a spectral radio. You can ask to receive musical echoes, and Écho will go and find you a track across space and time, a track so obscure you have almost certainly never heard of it.</p>
+      <p>Écho is a messaging app built on impermanence.</p>
+      <p>In Écho, everything is an echo. It is the term we use for everything. Contacts are echoes, messages are echoes, bugs are echoes. Everything is an echo because everything is a memory. The application itself is an echo (hence its name). And like all echoes, it will fade in turn, when the time comes.</p>
+    </div>
+
+    <!-- Deutsch -->
+    <div class="lang-content" data-lang="de">
+      <p>Écho – Der Spektrale Messenger — Android / iOS, Beta</p>
+      <p>In Écho kommt eine Nachricht nicht auf einmal an, wenn du sie sendest. Sie enthüllt sich nach und nach, Fragment für Fragment, wie Wörter, die aus einem Fotoentwickler auftauchen. Manche erscheinen zuerst. Andere warten. Die Gedanken des anderen setzen sich vor deinen Augen zusammen. Insgesamt dauert es etwa vierzig Minuten, bis eine Nachricht ankommt, aber während des gesamten Prozesses siehst du, wie die Wörter erscheinen, sich anordnen und ihren Platz finden, um den endgültigen Text zu bilden. Das Adjektiv spektral beschreibt die geisterhafte Atmosphäre der Anwendung, in der jede Interaktion einen Prozess auslöst, der der Entwicklung eines Fotos oder eines Polaroids ähnelt: der Text entsteht, die Fotos entstehen, die Musik entsteht.</p>
+      <p>Wenn du einen Kontakt hinzufügst, „entwickelt" er sich ebenfalls über etwa vierzig Minuten, während derer du siehst, wie sein Foto sich entfaltet.</p>
+      <p>Die meisten Messaging-Anwendungen basieren auf Unmittelbarkeit und Sofortigkeit. Écho geht davon aus, dass du nicht verfügbar bist. Écho geht sogar davon aus, dass du abwesend bist. Dass du eine Erinnerung bist. Und dass dich vielleicht ein Echo irgendwo finden wird.</p>
+      <p>Die Nachrichten, die du sendest, verblassen nach und nach und verschwinden nach 7 Tagen.</p>
+      <p>Wenn du über längere Zeit (etwa zwanzig Tage) keine Interaktion mehr mit einem Kontakt hast, verblasst sein Foto, wie ein Bild, das seinen Kontrast verliert, und der Kontakt verschwindet vollständig aus deiner Liste. Du musst keine geisterhaften Kontakte mehr ansammeln, mit denen du seit dem Ende deines Studiums nicht mehr gesprochen hast. Es ist kein brutaler Bruch. Es ist ein Auseinanderdriften, wie im echten Leben.</p>
+      <p>Écho ist eine Korrespondenz, kein Feed. Man schreibt sich abwechselnd. Écho ist nicht nur ein spektraler Messenger, sondern auch ein spektrales Radio. Du kannst darum bitten, musikalische Echos zu empfangen, und Écho wird für dich einen Titel durch Raum und Zeit aufspüren, einen Titel, der in der Regel so obskur ist, dass du ihn mit ziemlicher Sicherheit noch nie gehört hast.</p>
+      <p>Écho ist ein Messenger, der auf Vergänglichkeit basiert.</p>
+      <p>In Écho ist alles ein Echo. So nennen wir alles. Kontakte sind Echos, Nachrichten sind Echos, Bugs sind Echos. Alles ist ein Echo, weil alles eine Erinnerung ist. Die Anwendung selbst ist ein Echo (daher ihr Name). Und wie jedes Echo wird auch sie irgendwann verblassen, wenn die Zeit gekommen ist.</p>
+    </div>
+
+    <!-- Русский -->
+    <div class="lang-content" data-lang="ru">
+      <p>Écho – Призрачный Мессенджер — Android / iOS, бета</p>
+      <p>В Écho, когда вы отправляете сообщение, текст не приходит сразу целиком. Он раскрывается постепенно, фрагмент за фрагментом, как слова, проявляющиеся в фотографическом проявителе. Одни появляются первыми. Другие ждут. Мысли другого человека складываются у вас на глазах. В общей сложности сообщение добирается до адресата около сорока минут, но на протяжении всего этого процесса вы наблюдаете, как слова появляются, выстраиваются и занимают своё место, образуя окончательный текст. Прилагательное призрачный описывает атмосферу приложения, в котором каждое взаимодействие запускает процесс, схожий с проявлением фотографии или полароида — текст проявляется, фотографии проявляются, музыка проявляется.</p>
+      <p>Когда вы добавляете контакт, он тоже «проявляется» примерно за сорок минут — и всё это время вы можете наблюдать, как его фотография обретает чёткость.</p>
+      <p>Большинство мессенджеров построены на мгновенности и немедленности. Écho исходит из того, что вы недоступны. Écho исходит, по сути, из того, что вас нет. Что вы — воспоминание. И что, возможно, какое-то эхо найдёт вас где-нибудь.</p>
+      <p>Отправленные вами сообщения постепенно тускнеют и исчезают через 7 дней.</p>
+      <p>Если вы долго не взаимодействуете с контактом — около двадцати дней — его фотография блекнет, словно снимок, теряющий контраст, и контакт полностью исчезает из вашего списка. Вам больше не нужно накапливать призрачные контакты, с которыми вы не разговаривали со времён учёбы. Это не резкий разрыв. Это отдаление — как в настоящей жизни.</p>
+      <p>Écho — это переписка, а не лента. Мы пишем друг другу по очереди. Помимо призрачного мессенджера, Écho — ещё и призрачное радио. Вы можете попросить получать музыкальные эхо, и Écho отыщет для вас композицию сквозь пространство и время — настолько редкую, что вы, почти наверняка, никогда о ней не слышали.</p>
+      <p>Écho — мессенджер, основанный на непостоянстве.</p>
+      <p>В Écho всё является эхом. Именно так мы называем всё. Контакты — это эхо, сообщения — это эхо, баги — это эхо. Всё является эхом, потому что всё является воспоминанием. Само приложение — это эхо, отсюда и его название. И как любое эхо, оно тоже растворится в своё время, когда придёт момент.</p>
+    </div>
+
+    <!-- Español -->
+    <div class="lang-content" data-lang="es">
+      <p>Écho – El Mensajero Espectral — Android / iOS, beta</p>
+      <p>En Écho, cuando envías un mensaje, el texto no llega de una sola vez. Se revela progresivamente, fragmento a fragmento, como palabras que emergen de un revelador fotográfico. Algunas aparecen primero. Otras esperan. El pensamiento del otro se reconstituye ante tus ojos. En total, el mensaje tarda unos cuarenta minutos en llegar, pero durante todo el proceso ves cómo las palabras aparecen, se ordenan y encuentran su lugar para formar el texto definitivo. El adjetivo espectral describe la atmósfera fantasmal de la aplicación, donde cada interacción desencadena un proceso similar al revelado de una fotografía o de un polaroid: el texto emerge, las fotos emergen, la música emerge.</p>
+      <p>Cuando añades un contacto, este también se «revela» en unos cuarenta minutos, durante los cuales puedes ver cómo su foto toma forma.</p>
+      <p>La mayoría de las aplicaciones de mensajería están basadas en la instantaneidad y la inmediatez. Écho parte del principio de que no estás disponible. Écho parte, en realidad, del principio de que estás ausente. De que eres un recuerdo. Y de que quizás un eco te encontrará en algún lugar.</p>
+      <p>Los mensajes que envías se desvanecen progresivamente y desaparecen a los 7 días.</p>
+      <p>Si no tienes más interacción con un contacto durante un largo tiempo (unos veinte días), su foto palidece, como una fotografía que pierde su contraste, y el contacto desaparece completamente de tu lista. Ya no tienes que acumular contactos fantasmales con los que no has hablado desde el final de tus estudios. No es una ruptura brutal. Es un alejamiento, como en la vida real.</p>
+      <p>Écho es una correspondencia, no un feed. Nos escribimos por turnos. Además de ser un mensajero espectral, Écho es también una radio espectral. Puedes pedir recibir ecos musicales, y Écho irá a buscarte una canción a través del espacio y del tiempo, una canción tan oscura que casi con toda seguridad nunca has oído hablar de ella.</p>
+      <p>Écho es un mensajero basado en la impermanencia.</p>
+      <p>En Écho, todo es un eco. Es el término que usamos para todo. Los contactos son ecos, los mensajes son ecos, los bugs son ecos. Todo es un eco porque todo es un recuerdo. La propia aplicación es un eco (de ahí su nombre). Y como todo eco, ella también desaparecerá a su vez, cuando llegue el momento.</p>
+    </div>
+
+  </main>
+
+  <aside class="beta-sidebar">
+    <div class="beta-sidebar-label" id="beta-label">Bêta /</div>
+    <p class="beta-desc" id="beta-desc">Entrez votre adresse e-mail pour rejoindre la bêta.</p>
+    <form class="beta-form" id="beta-form" action="https://echo-beta.reneobeworks.workers.dev" method="POST">
+      <input type="email" name="email" id="beta-email" placeholder="adresse@email.com" required>
+      <button type="submit" id="beta-submit">Envoyer</button>
+    </form>
+    <p class="beta-success" id="beta-success" style="display:none"></p>
+  </aside>
+
+  </div><!-- /.page-layout -->
+
+  <footer>
+    <span>&copy; 2026 Périhélie Labs</span>
+    <span>perihelie-labs.net <span class="cursor-footer">█</span></span>
+  </footer>
+
+  <script>
+    const betaStrings = {
+      fr: { label: 'Bêta /',    desc: 'Entrez votre adresse e-mail pour rejoindre la bêta.', placeholder: 'adresse@email.com', submit: 'Envoyer',   success: 'Enregistré. Nous vous contacterons bientôt.' },
+      en: { label: 'Beta /',    desc: 'Enter your email address to join the beta.',           placeholder: 'address@email.com',  submit: 'Send',      success: 'Registered. We will be in touch soon.' },
+      de: { label: 'Beta /',    desc: 'E-Mail-Adresse eingeben, um der Beta beizutreten.',    placeholder: 'adresse@email.com',  submit: 'Senden',    success: 'Registriert. Wir melden uns bald.' },
+      ru: { label: 'Бета /',    desc: 'Введите адрес эл. почты для участия в бете.',          placeholder: 'адрес@почта.com',    submit: 'Отправить', success: 'Записано. Мы скоро свяжемся с вами.' },
+      es: { label: 'Beta /',    desc: 'Introduce tu correo electrónico para unirte a la beta.', placeholder: 'dirección@email.com', submit: 'Enviar', success: 'Registrado. Nos pondremos en contacto pronto.' },
+    };
+
+    function updateBetaSidebar(lang) {
+      const s = betaStrings[lang];
+      document.getElementById('beta-label').textContent   = s.label;
+      document.getElementById('beta-desc').textContent    = s.desc;
+      document.getElementById('beta-email').placeholder   = s.placeholder;
+      document.getElementById('beta-submit').textContent  = s.submit;
+    }
+
+    const langBtns = document.querySelectorAll('.lang-btn');
+
+    langBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        const current = document.querySelector('.lang-content.visible');
+        const next = document.querySelector(`.lang-content[data-lang="${lang}"]`);
+
+        if (current === next) return;
+
+        current.style.opacity = '0';
+        setTimeout(() => {
+          current.classList.remove('visible');
+          next.classList.add('visible');
+          requestAnimationFrame(() => next.style.opacity = '1');
+        }, 300);
+
+        langBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        updateBetaSidebar(lang);
+      });
+    });
+
+    // Détection automatique de la langue du navigateur
+    const supported = ['fr', 'en', 'de', 'ru', 'es'];
+    const browserLang = (navigator.language || 'en').slice(0, 2).toLowerCase();
+    const autoLang = supported.includes(browserLang) ? browserLang : 'en';
+
+    if (autoLang !== 'fr') {
+      const current = document.querySelector('.lang-content.visible');
+      const next = document.querySelector(`.lang-content[data-lang="${autoLang}"]`);
+      current.classList.remove('visible');
+      next.classList.add('visible');
+      langBtns.forEach(b => b.classList.toggle('active', b.dataset.lang === autoLang));
+      updateBetaSidebar(autoLang);
+    }
+
+    // Message de confirmation après soumission
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('subscribed') === '1') {
+      const activeLang = document.querySelector('.lang-btn.active')?.dataset.lang || 'fr';
+      document.getElementById('beta-form').style.display = 'none';
+      document.getElementById('beta-desc').style.display = 'none';
+      const successEl = document.getElementById('beta-success');
+      successEl.textContent = betaStrings[activeLang].success;
+      successEl.style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
