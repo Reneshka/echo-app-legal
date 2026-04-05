@@ -167,7 +167,7 @@
 
   <p class="app-name">Écho</p>
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: 3 April 2026</p>
+  <p class="updated">Last updated: 5 April 2026</p>
 
   <div class="preamble">
     Écho is a messaging application built on impermanence. Your messages fade away. Your conversations disappear. Your contacts dim over time. This is not a malfunction — it is the founding principle of the service.<br><br>
@@ -227,7 +227,20 @@
     <li>You may <strong>revoke your consent at any time</strong> from the ÉchoSpectre privacy settings. Revocation takes effect immediately for any future game session.</li>
   </ul>
 
-  <h3>2.5 Data We Do NOT Collect</h3>
+  <h3>2.5 Data Related to the Music Box</h3>
+  <p>The Music Box is a feature that allows you to keep a persistent copy of musical compositions exchanged via Écho. Unlike other messages, these compositions are not subject to the impermanence policy and remain accessible until you manually delete them.</p>
+  <table>
+    <thead><tr><th>Data</th><th>Purpose</th><th>Legal Basis</th></tr></thead>
+    <tbody>
+      <tr><td>Musical notes (MIDI data)</td><td>Melody playback</td><td>Performance of a contract (Art. 6(1)(b) GDPR)</td></tr>
+      <tr><td>Title and accompanying text (encrypted)</td><td>Display to the collection owner</td><td>Performance of a contract (Art. 6(1)(b) GDPR)</td></tr>
+      <tr><td>Contact display name</td><td>Identifying the correspondent</td><td>Performance of a contract (Art. 6(1)(b) GDPR)</td></tr>
+    </tbody>
+  </table>
+  <p>The title and accompanying text are encrypted at rest using a derived key unique to each user. Musical notes, which do not constitute personal data, are stored unencrypted.</p>
+  <p>Each user manages their own collection independently. Deleting an item from your collection does not affect the copy held by the other party. When an account is deleted, the user's entire collection is removed.</p>
+
+  <h3>2.6 Data We Do NOT Collect</h3>
   <ul>
     <li>We do not access your phone's contact list.</li>
     <li>We do not use cookies, advertising trackers or behavioural analytics tools.</li>
@@ -245,6 +258,7 @@
       <tr><td>Associated files</td><td>Irreversibly deleted 7 days after sending</td></tr>
       <tr><td>Connections between contacts</td><td>Begin to fade after 1 day without interaction; complete disappearance after 21 days</td></tr>
       <tr><td>Account data</td><td>Retained while account is active. Deleted within 30 days of a deletion request.</td></tr>
+      <tr><td>Music Box</td><td>Retained until manually deleted by the user. Removed upon account deletion.</td></tr>
     </tbody>
   </table>
   <p><strong>Irreversibility:</strong> Messages and files deleted under this policy are permanently erased from our servers. No backup copies are retained. Deleted data cannot be recovered — not by us, not by you, not by any third party.</p>
@@ -293,6 +307,7 @@
     <li>Automated and irreversible deletion of data in accordance with the impermanence policy.</li>
     <li>No backup copies of deleted data.</li>
     <li>For ÉchoSpectre: temporary client-side decryption only, transmission of isolated fragments via TLS, no permanent storage by the AI provider.</li>
+    <li>For the Music Box: at-rest encryption of the title and accompanying text using a derived key unique to each user.</li>
   </ul>
 
   <h2>7. Minors</h2>

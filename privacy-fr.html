@@ -182,7 +182,7 @@
 
   <p class="app-name">Écho</p>
   <h1>Politique de confidentialité</h1>
-  <p class="updated">Dernière mise à jour : 3 avril 2026</p>
+  <p class="updated">Dernière mise à jour : 5 avril 2026</p>
 
   <div class="preamble">
     Écho est une application de messagerie construite sur l'impermanence. Vos messages s'effacent. Vos conversations disparaissent. Vos contacts s'estompent avec le temps. Ce n'est pas un dysfonctionnement — c'est le principe fondateur du service.<br><br>
@@ -242,7 +242,20 @@
     <li>Vous pouvez <strong>révoquer votre consentement à tout moment</strong> depuis les paramètres de confidentialité d'ÉchoSpectre. La révocation prend effet immédiatement pour toute partie future.</li>
   </ul>
 
-  <h3>2.5 Données que nous ne collectons pas</h3>
+  <h3>2.5 Données liées à la Boîte à musique</h3>
+  <p>La Boîte à musique est une fonctionnalité permettant de conserver une copie persistante des compositions musicales échangées via Écho. Contrairement aux autres messages, ces compositions ne sont pas soumises à la politique d'impermanence et restent accessibles tant que l'utilisateur ne les supprime pas manuellement.</p>
+  <table>
+    <thead><tr><th>Donnée</th><th>Finalité</th><th>Base juridique</th></tr></thead>
+    <tbody>
+      <tr><td>Notes musicales (données MIDI)</td><td>Restitution de la mélodie</td><td>Exécution du contrat (art. 6(1)(b) RGPD)</td></tr>
+      <tr><td>Titre et texte d'accompagnement (chiffrés)</td><td>Affichage au propriétaire de la collection</td><td>Exécution du contrat (art. 6(1)(b) RGPD)</td></tr>
+      <tr><td>Nom d'affichage du contact</td><td>Identification de l'interlocuteur</td><td>Exécution du contrat (art. 6(1)(b) RGPD)</td></tr>
+    </tbody>
+  </table>
+  <p>Le titre et le texte d'accompagnement sont chiffrés au repos à l'aide d'une clé dérivée propre à chaque utilisateur. Les notes musicales, qui ne constituent pas des données à caractère personnel, sont stockées en clair.</p>
+  <p>Chaque utilisateur gère sa propre collection de manière indépendante. La suppression d'un élément par un utilisateur n'affecte pas la copie détenue par l'autre partie. En cas de suppression de compte, l'intégralité de la collection de l'utilisateur est supprimée.</p>
+
+  <h3>2.6 Données que nous ne collectons pas</h3>
   <ul>
     <li>Nous n'accédons pas à votre répertoire téléphonique.</li>
     <li>Nous n'utilisons pas de cookies, de traceurs publicitaires, ni d'outils d'analyse comportementale.</li>
@@ -260,6 +273,7 @@
       <tr><td>Fichiers associés</td><td>Supprimés irréversiblement 7 jours après l'envoi</td></tr>
       <tr><td>Connexions entre contacts</td><td>Commencent à s'estomper après 1 jour sans interaction ; disparition complète après 21 jours</td></tr>
       <tr><td>Données de compte</td><td>Conservées tant que le compte est actif. Supprimées dans les 30 jours suivant une demande de suppression.</td></tr>
+      <tr><td>Boîte à musique</td><td>Conservées tant que l'utilisateur ne les supprime pas manuellement. Supprimées en cas de suppression du compte.</td></tr>
     </tbody>
   </table>
   <p><strong>Irréversibilité :</strong> Les messages et fichiers supprimés sont effacés de manière définitive de nos serveurs. Aucune copie de sauvegarde n'est conservée. Les données supprimées ne peuvent être récupérées, ni par nous, ni par vous, ni par un tiers.</p>
@@ -308,6 +322,7 @@
     <li>Suppression automatisée et irréversible des données conformément à la politique d'impermanence.</li>
     <li>Absence de copies de sauvegarde des données supprimées.</li>
     <li>Dans le cadre d'ÉchoSpectre : déchiffrement temporaire côté client uniquement, transmission de fragments isolés via TLS, absence de stockage permanent par le prestataire d'IA.</li>
+    <li>Dans la Boîte à musique : chiffrement au repos du titre et du texte d'accompagnement à l'aide d'une clé dérivée propre à chaque utilisateur.</li>
   </ul>
 
   <h2>7. Mineurs</h2>
